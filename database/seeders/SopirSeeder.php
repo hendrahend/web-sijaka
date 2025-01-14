@@ -36,7 +36,28 @@ class SopirSeeder extends Seeder
             [
                 'name' => 'Sopir 6',
                 'no_wa' => '085983724643',
-            ]
+            ],
+            [
+                'name' => 'Sopir 7',
+                'no_wa' => '081234234213',
+            ],
+            [
+                'name' => 'Sopir 8',
+                'no_wa' => '085723423412',
+            ],
+            [
+                'name' => 'Sopir 9',
+                'no_wa' => '081234234233',
+            ],
+            [
+                'name' => 'Sopir 10',
+                'no_wa' => '085723423422',
+            ],
+            [
+                'name' => 'Sopir 11',
+                'no_wa' => '085723423421',
+            ],
+
         ];
 
         foreach ($sopirs as $value) {

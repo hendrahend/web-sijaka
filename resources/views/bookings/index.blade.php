@@ -9,7 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-white">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Left Layout: List of Cars -->
                     <div class="car-list p-6">
                         <h3 class="text-xl font-semibold mb-4">Pilih Kendaraan</h3>
 
@@ -26,8 +25,6 @@
                             <button id="next-day" class="text-gray-500 hover:text-gray-700">Next Day →</button>
                         </div>
 
-                      
-                        <!-- List Of Cars-->
                         <div class="space-y-4 max-h-96 overflow-y-auto">
                             @foreach ($cars as $car)
                                 <div class="flex justify-between items-center p-4 bg-gray-700 rounded-lg">
@@ -44,14 +41,10 @@
                                 </div>
                             @endforeach
                         </div>
-
-                      
                     </div>
 
-                    <!-- Right Layout: Calendar -->
                     <div class="calendar p-6">
                         <h3 class="text-xl font-semibold mb-4">Tanggal</h3>
-                        <!-- FullCalendar container -->
                         @include('bookings.calendar', ['approvedBookings' => $approvedBookings])
                     </div>
                 </div>

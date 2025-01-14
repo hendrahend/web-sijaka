@@ -1,4 +1,3 @@
-<!-- filepath: /c:/Users/asus/Documents/VSCode Project/test-laravel-app/resources/views/bookings/calendar.blade.php -->
 <!DOCTYPE html>
 <html>
 <head>

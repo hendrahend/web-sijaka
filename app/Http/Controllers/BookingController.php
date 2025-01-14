@@ -15,8 +15,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        // Fetch vehicles from the database (or define a static list)
-        $cars = Car::all(); 
+        $cars = Car::all();
         $approvedBookings = Booking::where('status', 'approved')->get();
         return view('bookings.index', compact('cars', 'approvedBookings'));
     }
@@ -45,7 +44,6 @@ class BookingController extends Controller
             'car_id' => 'required|exists:cars,id',
             'sopir_id' => 'nullable|exists:sopirs,id',
         ]);
-        // dd($user->name);
         try {
             Booking::create([
                 'name' => $user->name,
@@ -103,6 +101,7 @@ class BookingController extends Controller
     public function approve($id)
     {
         try {
+            
             $booking = Booking::findOrFail($id);
             $booking->status = 'approved';
             $booking->save();
@@ -113,30 +112,30 @@ class BookingController extends Controller
         }
     }
 
-    public function reject($id)
-    {
-        try {
-            $booking = Booking::findOrFail($id);
+    // public function reject($id)
+    // {
+    //     try {
+    //         $booking = Booking::findOrFail($id);
 
-            // Update the status of the car to 'available'
-            $car = Car::find($booking->car_id);
-            $car->status = 'available';
-            $car->save();
+    //         // Update the status of the car to 'available'
+    //         $car = Car::find($booking->car_id);
+    //         $car->status = 'available';
+    //         $car->save();
 
-            // Update the status of the sopir to 'available' if a sopir is associated
-            if ($booking->sopir_id) {
-                $sopir = Sopir::find($booking->sopir_id);
-                $sopir->status = 'available';
-                $sopir->save();
-            }
+    //         // Update the status of the sopir to 'available' if a sopir is associated
+    //         if ($booking->sopir_id) {
+    //             $sopir = Sopir::find($booking->sopir_id);
+    //             $sopir->status = 'available';
+    //             $sopir->save();
+    //         }
 
-            $booking->delete();
+    //         $booking->delete();
 
-            return redirect()->route('dashboard')->with('success', 'Booking has been rejected and deleted successfully!');
-        } catch (\Throwable $th) {
-            return back()->with(['error' => $th->getMessage()]);
-        }
-    }
+    //         return redirect()->route('dashboard')->with('success', 'Booking has been rejected and deleted successfully!');
+    //     } catch (\Throwable $th) {
+    //         return back()->with(['error' => $th->getMessage()]);
+    //     }
+    // }
     
     public function calendar()
     {
@@ -151,12 +150,12 @@ class BookingController extends Controller
         try {
             $booking = Booking::findOrFail($id);
 
-            // Update the status of the car to 'available'
-            $car = Car::find($booking->car_id);
-            $car->status = 'available';
-            $car->save();
+            if($booking->car_id){
+                $car = Car::find($booking->car_id);
+                $car->status = 'available';
+                $car->save();
+            }
 
-            // Update the status of the sopir to 'available' if a sopir is associated
             if ($booking->sopir_id) {
                 $sopir = Sopir::find($booking->sopir_id);
                 $sopir->status = 'available';

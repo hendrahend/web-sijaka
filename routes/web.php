@@ -27,10 +27,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-// Route::delete('bookings/{id}/reject', [DashboardController::class, 'reject'])->name('bookings.reject');
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -38,18 +34,17 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('users', UserController::class);
     Route::resource('bookings', BookingController::class);
-    Route::get('/get-booking-stats', [DashboardController::class, 'getBookingStats']);
-    Route::post('bookings/{id}/approve', [BookingController::class, 'approve'])->name('bookings.approve');
-Route::delete('bookings/{id}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
-Route::get('/calendar', [BookingController::class, 'calendar'])->name('calendar');
     Route::resource('history', HistoryController::class);
     Route::resource('cars', CarController::class);
     Route::resource('sopirs', SopirController::class);
-    Route::resource('trackings', TrackingController::class);
+    // Route::resource('trackings', TrackingController::class);
 
-    Route::get('/track', [TrackingController::class, 'trek'])->name('trek');
+    Route::post('bookings/{id}/approve', [BookingController::class, 'approve'])->name('bookings.approve');
+    Route::delete('bookings/{id}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
+    
+    // Route::get('/track', [TrackingController::class, 'trek'])->name('trek');
+    Route::get('/export', [HistoryController::class, 'cetak'])->name('cetak'); 
     Route::get('/export/pdf', [HistoryController::class, 'cetakPdf'])->name('cetak.pdf');
-    Route::get('/export', [HistoryController::class, 'cetak'])->name('cetak');
 });
 
 

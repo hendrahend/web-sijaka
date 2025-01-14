@@ -24,11 +24,11 @@
                     </x-nav-link>
                 </div>
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('trackings.index')" :active="request()->routeIs('trackings.index')">
                         {{ __('Tracking Kendaraan') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('history.index')" :active="request()->routeIs('history.index')">

@@ -15,16 +15,11 @@ class Booking extends Model
 
     public function car()
     {
-        return $this->belongsTo(Car::class);
+        return $this->belongsTo(Car::class, 'car_id', 'id');
     }
-
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 
     public function sopir()
     {
-        return $this->belongsTo(Sopir::class);
+        return $this->belongsTo(Sopir::class, 'sopir_id', 'id');
     }
 }

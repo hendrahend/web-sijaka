@@ -14,7 +14,7 @@
                         <h3 class="text-2xl font-semibold">{{ __('Kendaraan Tersedia') }}</h3>
                     </div>
                     <div class="text-center">
-                        <span class="text-3xl font-bold">{{ $carss }}</span>
+                        <span class="text-3xl font-bold">{{ $availableCars }}</span>
                     </div>
                 </div>
 
@@ -23,7 +23,7 @@
                         <h3 class="text-2xl font-semibold">{{ __('Kendaraan Dipinjamkan') }}</h3>
                     </div>
                     <div class="text-center">
-                        <span class="text-3xl font-bold">{{ $carsss }}</span>
+                        <span class="text-3xl font-bold">{{ $unavailableCars }}</span>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                         <h3 class="text-2xl font-semibold">{{ __('Menunggu Persetujuan') }}</h3>
                     </div>
                     <div class="text-center">
-                        <span class="text-3xl font-bold">{{ $bookingss }}</span>
+                        <span class="text-3xl font-bold">{{ $pendingBookings }}</span>
                     </div>
                 </div>
                 <div class="bg-gray-800 text-gray-100 p-6 rounded-lg shadow-lg flex items-center justify-between">
@@ -40,7 +40,7 @@
                         <h3 class="text-2xl font-semibold">{{ __('Sopir Tersedia') }}</h3>
                     </div>
                     <div class="text-center">
-                        <span class="text-3xl font-bold">{{ $sopirs }}</span>
+                        <span class="text-3xl font-bold">{{ $availableSopirs }}</span>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                                         @csrf
                                         <button type="submit" class="focus:outline-none text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">{{ __('APPROVE') }}</button>
                                     </form>
-                                    <form action="{{ route('bookings.reject', $booking->id) }}" method="POST" class="inline">
+                                    <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{{ __('REJECT') }}</button>
@@ -89,7 +89,7 @@
                             </tr>
                             @empty
                                     <tr>
-                                        <td colspan="7" class="px-4 py-4 text-center">{{ __('Tidak ada data tersedia') }}</td>
+                                        <td colspan="10" class="px-4 py-4 text-center">{{ __('Tidak ada data tersedia') }}</td>
                                     </tr>
                         @endforelse
                         </tbody>

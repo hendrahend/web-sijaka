@@ -13,17 +13,12 @@ class CarController extends Controller
      */
     public function index()
     {
-
         $cars = Car::when(request()->search, function ($cars) {
             $cars = $cars->where('name', 'like', '%' . request()->search . '%');
         })->paginate(10);
 
         return view('cars.index', compact('cars'))
         ->with('i', (request()->input('page', 1) - 1) * 10);
-        
-        // $cars = Car::all(); 
-
-        // return view('cars.index', compact('cars'));
     }
 
     /**

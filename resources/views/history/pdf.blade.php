@@ -54,7 +54,7 @@
                         <td>{{ $history->tanggal_pinjam }}</td>
                         <td>{{ $history->selesai_pinjam }}</td>
                         <td>{{ $history->kegiatan }}</td>
-                        <td>{{ $history->car->name }}</td>
+                        <td>{{ $history->car->name . ' - ' . $history->car->nopol }}</td>
                         <td>{{ $history->sopir->name ?? '-' }}</td>
                         <td>{{ $history->catatan }}</td>
                     </tr>
