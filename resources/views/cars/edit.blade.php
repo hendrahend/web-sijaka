@@ -32,7 +32,10 @@
                         </div>
                         <div class="mt-4">
                             <x-input-label for="status" :value="__('Status')" />
-                            <x-text-input id="status" class="block mt-1 w-full" type="text" name="status" :value="old('status', $car->status)" required autocomplete="status" />
+                            <select id="status" name="status" class="block mt-1 w-full dark:bg-gray-900 rounded-md">
+                                <option value="available" {{ old('status', $car->status) == 'available' ? 'selected' : '' }}>Available</option>
+                                <option value="unavailable" {{ old('status', $car->status) == 'unavailable' ? 'selected' : '' }}>Unavailable</option>
+                            </select>
                             <x-input-error :messages="$errors->get('status')" class="mt-2" />
                         </div>
                 

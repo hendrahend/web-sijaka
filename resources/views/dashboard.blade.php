@@ -46,7 +46,7 @@
             </div>
             <div class="dark:bg-gray-800 bg-white p-6 rounded-lg shadow-lg">
                 @include('grafik')
-            </div>            
+            </div>
             <div class="bg-white mt-8 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h3 class="text-2xl font-semibold mb-4">{{ __('Permohonan Kendaraan Menunggu Persetujuan') }}</h3>
@@ -113,22 +113,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Example Static Data for Vehicle Statuses -->
-                            {{-- <tr class="border-b">
-                                <td class="px-4 py-2">Toyota Avanza</td>
-                                <td class="px-4 py-2">B 1234 ABC</td>
-                                <td class="px-4 py-2">{{ __('Dipinjam') }}</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-4 py-2">Honda Civic</td>
-                                <td class="px-4 py-2">B 5678 DEF</td>
-                                <td class="px-4 py-2 ">{{ __('Dipinjam') }}</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-4 py-2">Suzuki Ertiga</td>
-                                <td class="px-4 py-2">B 9012 GHI</td>
-                                <td class="px-4 py-2 text-green-500">{{ __('Tersedia') }}</td>
-                            </tr> --}}
                             @forelse ($bookings->where('status', 'approved') as $booking)
                             <tr class="border-b">
                                 <td class="px-4 py-2">{{ $booking->name }}</td>
